@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل احتراف JavaScript - The Piracy</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        piracy: ['Orbitron', 'sans-serif'], /* خط خاص للتوقيع */
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for in-browser JSX parsing -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
+        
+        /* Glassmorphism utility classes */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+        /* Code block styling */
+        code.inline-code {
+            direction: ltr;
+            unicode-bidi: embed;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Glitch Effect for The Piracy Signature */
+        .glitch-hover:hover {
+            animation: glitch 0.3s linear infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) text-shadow: -2px 0 red; }
+            40% { transform: translate(-2px, -2px) text-shadow: 2px 0 blue; }
+            60% { transform: translate(2px, 2px) text-shadow: -2px 0 red; }
+            80% { transform: translate(2px, -2px) text-shadow: 2px 0 blue; }
+            100% { transform: translate(0) }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 min-h-screen">
+
+    <!-- Container for React App -->
+    <div id="root"></div>
+
+    <!-- Hidden Raw Data Container (To preserve content exactly) -->
+    <textarea id="raw-data" style="display:none;">
+# 📘 دليل أسئلة وإجابات JavaScript مع التوضيحات الكاملة
+> 📜 **ملاحظة تنسيق:** تم إعداد هذا الملف باتجاه اليمين لليسار (RTL) ليتوافق مع معايير اللغة العربية. يمكن نسخه مباشرة إلى Word أو أي محرر نصوص مع الحفاظ على التنسيق. جميع الأسئلة والإجابات والتوضيحات مذكورة **بدون أي حذف أو اختصار** كما طُلب.
+
+---
+
+### 🔹 السؤال 1: ما ناتج تنفيذ الكود التالي؟ `document.write ( 5 + 10 );`
+✅ **الإجابة:** `c) 15`  
+💡 **التوضيح:** الكود الذي يستخدم الدالة `document.write` لطباعة العمليات الحسابية مثل `(5+10)` يقوم بحساب الناتج أولاً وهو 15 ومن ثم طباعته [18، 19].
+
+---
+
+### 🔹 السؤال 2: ما وظيفة `window.print()` ؟
+✅ **الإجابة:** `c) عرض نافذة الطباعة`  
+💡 **التوضيح:** يُستخدم الأمر `window.print()` لطباعة صفحة معينة [1].
+
+---
+
+### 🔹 السؤال 3: ما الطريقة الصحيحة لتعريف متغير نصي ؟
+✅ **الإجابة:** `a) var name = 'Ali';`  
+💡 **التوضيح:** البيانات الحرفية (النصية) تُكتب دائماً داخل علامة تنصيص مفردة أو مزدوجة [2].
+
+---
+
+### 🔹 السؤال 4: أي من أنواع البيانات التالية يستخدم لتخزين قيم منطقية؟
+✅ **الإجابة:** `c) Boolean`  
+💡 **التوضيح:** البيانات المنطقية تُعرف باسم `Boolean` في لغة JavaScript ولها قيمتين فقط هما `true` أو `false` [37، 39].
+
+---
+
+### 🔹 السؤال 5: أي من الخيارات التالية يمكن استخدامه لتعريف قيمة منطقية؟
+✅ **الإجابة:** `c) var x = false;`  
+💡 **التوضيح:** القيم المنطقية تُكتب ككلمات محجوزة بدون أي علامات تنصيص [3].
+
+---
+
+### 🔹 السؤال 6: أي من الأنواع التالية يمكن أن يتغير نوع بياناته خلال تشغيل البرنامج؟
+✅ **الإجابة:** `b) Variable`  
+💡 **التوضيح:** المتغيرات (Variables) هي حقول في الذاكرة تتغير محتوياتها وقيمها أثناء تشغيل البرنامج، وذلك على عكس الثوابت (Constants) التي لا يمكن تغييرها [26، 27].
+
+---
+
+### 🔹 السؤال 7: أي من القيم التالية تعد Boolean ؟
+✅ **الإجابة:** `b) true`  
+💡 **التوضيح:** القيم الخاصة بالبيانات المنطقية تكتب بأحرف صغيرة وتقتصر على `true` و `false` [3].
+
+---
+
+### 🔹 السؤال 8: ما ناتج `typeof 5.5` ؟
+✅ **الإجابة:** `b) number`  
+💡 **التوضيح:** لغة JavaScript تمتلك نوعاً واحداً فقط للبيانات الرقمية وهو `number`، سواء كانت الأرقام صحيحة أو تحتوي على علامة عشرية [36، 40].
+
+---
+
+### 🔹 السؤال 9: ما ناتج `typeof "123"` ؟
+✅ **الإجابة:** `b) string`  
+💡 **التوضيح:** أي أرقام أو نصوص يتم كتابتها داخل علامات التنصيص يتم التعامل معها في البرنامج كبيانات حرفية `string` [4].
+
+---
+
+### 🔹 السؤال 10: ما ناتج الكود التالي: `var Student = undefined; typeof Student;`
+✅ **الإجابة:** `C) undefined`  
+💡 **التوضيح:** عند استخدام المعامل `typeof` لفحص نوع بيانات متغير قيمته `undefined`، فإن الإجابة تكون `undefined` [5].
+
+---
+
+### 🔹 السؤال 11: ما ناتج الكود التالي؟ `var Student = null; typeof Student;`
+✅ **الإجابة:** `b) object`  
+💡 **التوضيح:** في JavaScript، نوع البيانات `null` يتم التعامل معه على أنه كائن (object)، لذا فإن إجابة `typeof null` هي `object` [40، 44].
+
+---
+
+### 🔹 السؤال 12: ما القيمة الافتراضية للمتغير غير المعرّف في JavaScript؟ `var ASD ;`
+✅ **الإجابة:** `B) undefine` *(مكتوبة في الخيارات هكذا، ولكن الكلمة الصحيحة برمجياً هي undefined)* 💡 **التوضيح:** أي متغير يتم إنشاؤه ولا يتم إسناد قيمة له، تكون قيمته ونوع بياناته غير مُعرّفة `undefined` [6].
+
+---
+
+### 🔹 السؤال 13: ما نتيجة الكود التالي؟ `var Name = " " ; typeof Name;`
+✅ **الإجابة:** `b) string`  
+💡 **التوضيح:** المتغيرات التي تحمل قيمة فارغة موضوعة داخل علامتي تنصيص تُعد بيانات حرفية (نصية) `string` [6].
+
+---
+
+### 🔹 السؤال 14: ما نتيجة المقارنة التالية : `null == undefined`
+✅ **الإجابة:** `b) True`  
+💡 **التوضيح:** عند اختبار المقارنة بين `null` و `undefined` باستخدام معامل التساوي `==`، فإن الناتج يكون `true` [7].
+
+---
+
+### 🔹 السؤال 15: ما ناتج تنفيذ الكود التالي : `var x = 5 ; var y = 10; ( x == 5 && y < 15 )`
+✅ **الإجابة:** `b) True`  
+💡 **التوضيح:** الشرط الأول `x == 5` صحيح (True)، والشرط الثاني `y < 15` صحيح (True). المعامل المنطقي `&&` يعطي `True` فقط في حال كان التعبيران صحيحين [8].
+
+---
+
+### 🔹 السؤال 16: ما ناتج المقارنة التالية؟ `( " 10 " === 10 )`
+✅ **الإجابة:** `D) false`  
+💡 **التوضيح:** معامل المقارنة `===` يتحقق من تطابق القيمة و النوع معاً. وفي هذا الكود أحدهما نص `string` والآخر رقم `number`، وبما أن النوعين مختلفان فالناتج يكون `false` [9].
+
+---
+
+### 🔹 السؤال 17: ما ناتج الكود التالي : `( 2 > 5 ) || ( 1 < 3 && 5 < 10 )`
+✅ **الإجابة:** `D) True`  
+💡 **التوضيح:** المعامل `&&` له أولوية في التنفيذ. يتم تقييم القوس الثاني أولاً `(1 < 3 && 5 < 10)` ونتيجته صحيحة `True`. ثم يتم مقارنته مع القوس الأول `(2 > 5)` وهو خطأ `False` باستخدام المعامل `||` (أو)، والذي يُرجع `True` في حال تحقق جزء واحد فقط على الأقل من الشرط [55، 56].
+
+---
+
+### 🔹 السؤال 18: ما ناتج الكود التالي : `10 > 5 && 20 < 10`
+✅ **الإجابة:** `D) false`  
+💡 **التوضيح:** الجانب الأول من التعبير `10 > 5` صحيح (True)، ولكن الجانب الآخر `20 < 10` خاطئ (False). معامل `&&` يتطلب تحقق الشرطين معاً، وبالتالي الناتج النهائي يكون `False` [8].
+
+---
+
+### 🔹 السؤال 19: ما نتيجة هذا الشرط : `10 <= ( x = 10 )`
+✅ **الإجابة:** `b) True`  
+💡 **التوضيح:** هذا التعبير يعيّن أولاً قيمة المتغير `x` لتصبح 10، ثم يقارن إذا ما كانت 10 أقل من أو تساوي 10، وهي مقارنة صحيحة فتكون النتيجة `True` [10].
+
+---
+
+### 🔹 السؤال 20: ما ناتج الكود التالي : `False || ( 2 < 5 && 20 > 10 )`
+✅ **الإجابة:** `D) True`  
+💡 **التوضيح:** الشرط الأيمن `( 2 < 5 && 20 > 10 )` نتيجته `True` لأن كلا التعبيرين بداخله صحيحان. وعند مقارنة `False` مع `True` باستخدام المعامل `||`، ستكون النتيجة النهائية `True` [8].
+
+---
+
+### 🔹 السؤال 21: ما ناتج التعبير التالي : `True && false || true`
+✅ **الإجابة:** `D) True`  
+💡 **التوضيح:** المعامل المنطقي `&&` (و) له أولوية في التنفيذ، وبالتالي يُحسب `true && false` أولاً ونتيجته `false`. ثم يُحسب التعبير المتبقي `false || true` باستخدام المعامل المنطقي `||` (أو)، والذي يعطي `true` بمجرد تحقق أحد التعبيرين [53، 56]. 
+
+---
+
+### 🔹 السؤال 22: ما الكلمة المفتاحية التي تستخدم لإنشاء أكثر من شرط؟
+✅ **الإجابة:** `D) else if`  
+💡 **التوضيح:** تستخدم الكلمة المفتاحية `else if` لاختبار شرط جديد (أو أكثر من شرط) في حال كان الشرط الأول في جملة `if` غير متحقق (False) [59، 67].
+
+---
+
+### 🔹 السؤال 23: ما فائدة الكلمة `break` في جملة `switch` ؟
+✅ **الإجابة:** `b) الخروج من جملة switch after تنفيذ الحالة`  
+💡 **التوضيح:** وظيفة الكلمة `break` هي إيقاف تنفيذ الأكواد التابعة للحالة والخروج فوراً من جملة `switch` (أو الحلقة التكرارية) لمنع البرنامج من اختبار الحالات الأخرى المتبقية [73، 77].
+
+---
+
+### 🔹 السؤال 24: ما فائدة الكلمة `default` في جملة `switch` ؟
+✅ **الإجابة:** `d) تنفيذها إذا لم يتحقق أي من الحالات`  
+💡 **التوضيح:** تُستخدم كلمة `default` بشكل اختياري لتنفيذ أمر أو مجموعة أوامر محددة في حال لم تتطابق أي من الحالات (cases) مع التعبير أو المتغير الذي يتم اختباره [73، 78].
+
+---
+
+### 🔹 السؤال 25: ما النتيجة إذا تحقق شرط `if` ؟
+✅ **الإجابة:** `d) تنفيذ الكود داخل القوسين`  
+💡 **التوضيح:** عندما يكون جواب الشرط المقترن بجملة `if` صحيحاً (True)، يتم تنفيذ مجموعة الأكواد المحددة داخل الأقواس الخاصة بها [59، 60].
+
+---
+
+### 🔹 السؤال 26: متى يتم تنفيذ جملة `else` ؟
+✅ **الإجابة:** `b) عندما لا يتحقق شرط if`  
+💡 **التوضيح:** يتم اللجوء إلى تنفيذ الأكواد البرمجية الموجودة داخل القوسين التابعين لجملة `else` فقط عندما تكون نتيجة اختبار الشرط في جملة `if` خاطئة (False) أي لم يتحقق [59، 61].
+
+---
+
+### 🔹 السؤال 27: ما الطريقة الصحيحة لكتابة شرط تحقق قيمة معينة في جملة `if` ؟
+✅ **الإجابة:** `b) if x == 5`  
+💡 **التوضيح:** للتحقق من التساوي في القيمة بين طرفين، يجب استخدام معامل المقارنة `==` بدلاً من علامة التخصيص `=` المنفردة [2].
+
+---
+
+### 🔹 السؤال 28: ما الكلمة المفتاحية التي تستخدم لإنشاء شرط بديل؟
+✅ **الإجابة:** `b) else if`  
+💡 **التوضيح:** تُستخدم `else if` لاختبار حالة إضافية أو شرط جديد بديل في حال كان تقييم الشرط الأول المرفق في بداية الجملة `if` خاطئاً [59، 67].
+
+---
+
+### 🔹 السؤال 29: أي من الخيارات التالية يعبر عن شرط يتحقق إذا كانت x تساوي 5 أو 10؟
+✅ **الإجابة:** `b) if (x == 5 || x == 10)`  
+💡 **التوضيح:** المعامل المنطقي `||` يعني (أو / OR)، ويُستخدم لتطبيق شرط يكتفي بتحقق أيٍ من الحالتين المذكورتين؛ سواء كانت إكس تساوي 5، أو 10 [53، 55].
+
+---
+
+### 🔹 السؤال 30: ما الجملة الصحيحة لبدء حلقة تكرارية من نوع `for` ؟
+✅ **الإجابة:** `b) for (i = 0; i < 5; i++)`  
+💡 **التوضيح:** التركيب البرمجي الصحيح لجملة `for` يتطلب الكلمة المحجوزة متبوعة بقوسين يضمان ثلاث تعبيرات مفصولة بفاصلة منقوطة: تحديد القيمة الابتدائية، ثم الشرط المطلوب استمرار الحلقة بناءً عليه، وأخيراً مقدار خطوة الزيادة أو النقصان [3].
+
+---
+
+### 🔹 السؤال 31: ما وظيفة الأمر `continue` في الحلقة؟
+✅ **الإجابة:** `b) يتجاهل الكود المتبقي ويبدأ التكرار التالي`  
+💡 **التوضيح:** جملة `continue` تُستخدم للقفز وتخطي تنفيذ باقي الأكواد المتبقية في الدورة الحالية ضمن الحلقة التكرارية، والرجوع مرة أخرى لقمة الشرط للبدء في تكرار جديد [10، 86].
+
+---
+
+### 🔹 السؤال 32: أي من العبارات التالية تستخدم للخروج من الحلقة فورًا؟
+✅ **الإجابة:** `C) break`  
+💡 **التوضيح:** الكلمة المحجوزة `break` تُستخدم لإنهاء العمليات والخروج فوراً من نطاق الحلقات التكرارية (مثل `for` و `while` و `do / while`) [4].
+
+---
+
+### 🔹 السؤال 33: في حلقة `while`، متى يتم التحقق من الشرط؟
+✅ **الإجابة:** `C) قبل تنفيذ كل تكرار`  
+💡 **التوضيح:** في حلقة `while`، يقوم البرنامج بالتحقق أولاً من صحة الشرط الموضوع بين الأقواس قبل السماح بتنفيذ الأكواد الموجودة بداخل الحلقة في كل مرة [87، 88].
+
+---
+
+### 🔹 السؤال 34: ما وظيفة الكود `i++` في الحلقات؟
+✅ **الإجابة:** `b) يزيد قيمة i واحد`  
+💡 **التوضيح:** المعامل `++` هو معامل حسابي يُستخدم للزيادة بمقدار (1) على القيمة الحالية للمتغير. وهو يُستخدم غالباً في الحلقات التكرارية لتحديث قيمة العداد [5].
+
+---
+
+### 🔹 السؤال 35: أي حلقة يتم تنفيذها على الأقل مرة واحدة ؟
+✅ **الإجابة:** `C) do...while`  
+💡 **التوضيح:** حلقة `do/while` تختلف عن باقي الحلقات في أن الكود بداخلها يتم تنفيذه مرة واحدة على الأقل في البداية؛ لأنها تقوم بتنفيذ الكود أولاً ثم بعد ذلك يتم التحقق من صحة الشرط، حتى ولو كان الشرط خاطئاً من الأصل [6].
+
+---
+📄 **انتهى الملف**
+    </textarea>
+
+    <!-- React Application Logic -->
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        // Component to beautifully render inline code blocks
+        const FormatText = ({ text }) => {
+            if (!text) return null;
+            const parts = text.split('`');
+            return (
+                <span className="leading-relaxed">
+                    {parts.map((part, i) => {
+                        if (i % 2 === 1) {
+                            return (
+                                <code key={i} className="inline-code bg-slate-200 dark:bg-slate-800 text-blue-600 dark:text-blue-400 px-2 py-0.5 mx-1 rounded font-mono text-[0.9em] border border-slate-300 dark:border-slate-700 shadow-sm" dir="ltr">
+                                    {part}
+                                </code>
+                            );
+                        }
+                        return <span key={i}>{part}</span>;
+                    })}
+                </span>
+            );
+        };
+
+        const QuestionCard = ({ q, quizMode, displayIndex }) => {
+            const [revealed, setRevealed] = useState(false);
+
+            useEffect(() => {
+                if (!quizMode) setRevealed(true);
+                else setRevealed(false);
+            }, [quizMode]);
+
+            return (
+                <div className="glass-card p-6 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:border-blue-500/50 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-1.5 h-full bg-gradient-to-b from-blue-500 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-5 flex items-start gap-4 leading-tight">
+                        <span className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white w-10 h-10 flex justify-center items-center rounded-xl text-lg shrink-0 shadow-lg shadow-blue-500/30">
+                            {displayIndex}
+                        </span>
+                        <div className="mt-1">
+                            <FormatText text={q.qTitle} />
+                        </div>
+                    </h3>
+
+                    {quizMode && !revealed ? (
+                        <button
+                            onClick={() => setRevealed(true)}
+                            className="mt-6 w-full py-4 bg-slate-200 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-slate-700 rounded-xl text-blue-600 dark:text-blue-400 font-bold text-lg transition-all flex justify-center items-center gap-3 animate-fade-in shadow-sm hover:shadow-blue-500/30"
+                        >
+                            <i className="fas fa-eye"></i> إظهار الإجابة والتوضيح
+                        </button>
+                    ) : (
+                        <div className="mt-6 space-y-4 animate-fade-in">
+                            <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-500/20 p-5 rounded-xl">
+                                <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold mb-2 text-lg">
+                                    <i className="fas fa-check-circle"></i> الإجابة الصحيحة
+                                </div>
+                                <div className="text-slate-700 dark:text-slate-200 text-lg font-medium">
+                                    <FormatText text={q.answer} />
+                                </div>
+                            </div>
+
+                            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-500/20 p-5 rounded-xl">
+                                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-extrabold mb-2 text-lg">
+                                    <i className="fas fa-lightbulb"></i> التوضيح العلمي
+                                </div>
+                                <div className="text-slate-600 dark:text-slate-300 leading-relaxed text-md font-medium">
+                                    <FormatText text={q.explanation} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const FloatingSignature = () => {
+            return (
+                <div className="fixed bottom-6 left-6 z-50 animate-fade-in group pointer-events-auto" dir="ltr">
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-purple-600 to-blue-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+                    <div className="relative flex items-center gap-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-4 py-2 rounded-full border border-purple-500/30 hover:border-purple-500/60 transition-all cursor-default shadow-lg">
+                        <i className="fas fa-skull text-red-500 dark:text-red-400 group-hover:animate-bounce"></i>
+                        <span className="font-piracy text-sm font-black tracking-widest text-slate-800 dark:text-white uppercase">
+                            The Piracy
+                        </span>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [questions, setQuestions] = useState([]);
+            const [search, setSearch] = useState("");
+            const [quizMode, setQuizMode] = useState(false);
+            const [isDark, setIsDark] = useState(true);
+            const [activeTab, setActiveTab] = useState("all");
+
+            useEffect(() => {
+                if (isDark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            }, [isDark]);
+
+            useEffect(() => {
+                try {
+                    const raw = document.getElementById('raw-data').value;
+                    const blocks = raw.split('---').map(b => b.trim()).filter(b => b.includes('### 🔹'));
+                    
+                    const parsed = blocks.map((block, idx) => {
+                        const qPart = block.split('✅ **الإجابة:**')[0]?.replace('### 🔹', '').trim();
+                        const aPart = block.split('✅ **الإجابة:**')[1]?.split('💡 **التوضيح:**')[0]?.trim();
+                        const ePart = block.split('💡 **التوضيح:**')[1]?.trim();
+                        return { id: idx, qTitle: qPart, answer: aPart, explanation: ePart };
+                    });
+                    
+                    setQuestions(parsed);
+                } catch (err) {
+                    console.error("Error parsing data: ", err);
+                }
+            }, []);
+
+            const uniqueQuestionsCount = useMemo(() => {
+                return questions.filter(q => !q.qTitle.includes('(مكرر)') && !q.qTitle.includes('(نسخة ثالثة)')).length;
+            }, [questions]);
+
+            const filtered = useMemo(() => {
+                let result = questions;
+                if (activeTab === "unique") {
+                    result = result.filter(q => !q.qTitle.includes('(مكرر)') && !q.qTitle.includes('(نسخة ثالثة)'));
+                }
+                const query = search.toLowerCase();
+                if (query) {
+                    result = result.filter(q =>
+                        (q.qTitle && q.qTitle.toLowerCase().includes(query)) ||
+                        (q.answer && q.answer.toLowerCase().includes(query)) ||
+                        (q.explanation && q.explanation.toLowerCase().includes(query))
+                    );
+                }
+                return result;
+            }, [search, questions, activeTab]);
+
+            return (
+                <div className="relative overflow-x-hidden min-h-screen">
+                    
+                    {/* Huge Background Watermark */}
+                    <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-[-1] opacity-[0.03] dark:opacity-[0.04] overflow-hidden">
+                        <span className="font-piracy text-[15vw] font-black whitespace-nowrap transform -rotate-12 select-none tracking-widest text-slate-900 dark:text-white">
+                            THE PIRACY
+                        </span>
+                    </div>
+
+                    <div className="fixed inset-0 z-[-2] bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+                    </div>
+
+                    {/* Header */}
+                    <header className="sticky top-0 z-40 glass-header py-4 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm transition-all">
+                        <div className="flex items-center gap-4">
+                            <div className="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-2.5 rounded-xl shadow-lg border border-slate-700/50">
+                                <i className="fab fa-js text-yellow-400 text-2xl drop-shadow-md"></i>
+                            </div>
+                            <div className="flex flex-col">
+                                <h1 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-slate-100">
+                                    دليل احتراف JavaScript
+                                </h1>
+                                <span className="font-piracy text-[0.65rem] tracking-[0.2em] uppercase bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 text-transparent bg-clip-text font-bold mt-0.5" dir="ltr">
+                                    Presented by The Piracy
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 w-full md:w-auto">
+                            <div className="relative w-full md:w-80">
+                                <i className="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input 
+                                    type="text" 
+                                    placeholder="ابحث في الأسئلة أو الأكواد..." 
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="w-full bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-full py-2 pr-11 pl-4 focus:outline-none focus:ring-2 ring-purple-500 text-slate-800 dark:text-slate-100 transition-all placeholder-slate-400 backdrop-blur-sm"
+                                />
+                            </div>
+
+                            <button
+                                onClick={() => setIsDark(!isDark)}
+                                className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 hover:border-purple-500 transition-all"
+                            >
+                                <i className={`fas text-lg ${isDark ? 'fa-sun text-amber-400' : 'fa-moon text-purple-400'}`}></i>
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* Hero Section */}
+                    <div className="pt-12 pb-8 px-6 text-center animate-fade-in relative z-10">
+                        <span className="inline-block py-1.5 px-4 rounded-full bg-purple-100 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20 text-sm font-bold mb-6 tracking-wider shadow-sm">
+                            <i className="fas fa-bolt text-yellow-500 ml-2"></i> الإصدار التقني المطلق
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 dark:text-white mb-6 leading-tight">
+                            مرجعك الشامل لأسئلة <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">JavaScript</span>
+                        </h2>
+
+                        <div className="mt-8 flex flex-col items-center gap-6">
+                            
+                            <div className="bg-slate-200/60 dark:bg-slate-800/60 p-1.5 rounded-2xl flex flex-wrap justify-center gap-2 border border-slate-300 dark:border-slate-700 shadow-inner max-w-full backdrop-blur-sm">
+                                <button
+                                    onClick={() => setActiveTab('all')}
+                                    className={`px-5 py-3 rounded-xl font-bold text-md md:text-lg transition-all ${
+                                        activeTab === 'all' 
+                                        ? 'bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' 
+                                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                                    }`}
+                                >
+                                    <i className="fas fa-list-ul ml-2"></i> جميع الأسئلة ({questions.length})
+                                </button>
+                                <button
+                                    onClick={() => setActiveTab('unique')}
+                                    className={`px-5 py-3 rounded-xl font-bold text-md md:text-lg transition-all ${
+                                        activeTab === 'unique' 
+                                        ? 'bg-white dark:bg-slate-700 text-purple-600 dark:text-purple-400 shadow-sm' 
+                                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                                    }`}
+                                >
+                                    <i className="fas fa-star ml-2"></i> الأسئلة الفريدة ({uniqueQuestionsCount})
+                                </button>
+                                <button
+                                    onClick={() => setQuizMode(!quizMode)}
+                                    className={`px-5 py-3 rounded-xl font-bold text-md md:text-lg transition-all ${
+                                        quizMode 
+                                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/40' 
+                                        : 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
+                                    }`}
+                                >
+                                    <i className={`fas ${quizMode ? 'fa-toggle-on' : 'fa-toggle-off'} ml-2`}></i> وضع الاختبار
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <main className="max-w-5xl mx-auto px-6 pb-24 relative z-10">
+                        <div className="grid grid-cols-1 gap-8">
+                            {filtered.length > 0 ? (
+                                filtered.map((q, idx) => (
+                                    <QuestionCard 
+                                        key={q.id} 
+                                        q={q} 
+                                        quizMode={quizMode} 
+                                        displayIndex={idx + 1} 
+                                    />
+                                ))
+                            ) : (
+                                <div className="text-center py-20 glass-card rounded-3xl">
+                                    <i className="fas fa-search text-5xl text-slate-300 mb-4"></i>
+                                    <p className="text-xl text-slate-500">لم يتم العثور على نتائج للبحث...</p>
+                                </div>
+                            )}
+                        </div>
+                    </main>
+
+                    <FloatingSignature />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
